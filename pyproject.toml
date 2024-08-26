@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "drfproject-onlineschool"
+version = "0.1.0"
+description = ""
+authors = ["Sumerian <shemerov.s@yandex.ru>"]
+readme = "README.md"
+packages = [{include = "drfproject_onlineschool"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
