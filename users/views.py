@@ -1,8 +1,16 @@
 from rest_framework import viewsets
-from users.models import User
-from users.serializer import UserSerializer
+from rest_framework import filters
+from users.models import User, Payment
+from users.serializer import UserSerializer, PaymentSerializer
 
 
 class UserViewSet(viewsets.ViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+
+class PaymentViewSet(viewsets.ModelViewSet):
+    serializer_class = PaymentSerializer
+    queryset = Payment.objects.all()
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['payment_date']
+    filterset_fields = ('course', 'lesson', 'payment_method',)
