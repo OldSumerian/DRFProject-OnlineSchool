@@ -1,0 +1,64 @@
+[
+  {
+    "model": "school.course",
+    "pk": 1,
+    "fields": {
+      "title": "backend",
+      "description": null,
+      "preview": ""
+    }
+  },
+  {
+    "model": "school.course",
+    "pk": 2,
+    "fields": {
+      "title": "frontend",
+      "description": null,
+      "preview": ""
+    }
+  },
+  {
+    "model": "school.lesson",
+    "pk": 1,
+    "fields": {
+      "course": 1,
+      "title": "Python DevOps",
+      "description": "Python development",
+      "preview": "",
+      "video_link": null
+    }
+  },
+  {
+    "model": "school.lesson",
+    "pk": 2,
+    "fields": {
+      "course": 1,
+      "title": "PHP DevOps",
+      "description": "PHP development",
+      "preview": "",
+      "video_link": null
+    }
+  },
+  {
+    "model": "school.lesson",
+    "pk": 3,
+    "fields": {
+      "course": 2,
+      "title": "JavaScript DevOps",
+      "description": "JavaScript development",
+      "preview": "",
+      "video_link": null
+    }
+  },
+  {
+    "model": "school.lesson",
+    "pk": 4,
+    "fields": {
+      "course": 2,
+      "title": "Designer",
+      "description": "Designer Figma",
+      "preview": "",
+      "video_link": null
+    }
+  }
+]
