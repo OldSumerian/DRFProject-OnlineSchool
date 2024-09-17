@@ -5,7 +5,7 @@ NULLABLE = {'blank': True, 'null': True}
 class Course(models.Model):
     title = models.CharField(max_length=50, verbose_name='Course Title', help_text='input course title')
     description = models.TextField(verbose_name='Course Description', help_text='input course description', **NULLABLE)
-    preview = models.ImageField(verbose_name='Course Preview', help_text='insert course preview')
+    preview = models.ImageField(verbose_name='Course Preview', help_text='insert course preview', **NULLABLE)
 
     class Meta:
         verbose_name = 'Course'

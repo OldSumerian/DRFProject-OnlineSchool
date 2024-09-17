@@ -1,16 +1,27 @@
 from django.core.management import BaseCommand
 
-from school.models import Lesson
+from school.models import Lesson, Course
 
 
 class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
+        course_list = [
+            {'title': 'backend'},
+            {'title': 'frontend'}
+        ]
+
+        # prepare_to_fill_base_list = []
+        # for course_data in course_list:
+        #     prepare_to_fill_base_list.append(Lesson(**course_data))
+        # Course.objects.bulk_create(prepare_to_fill_base_list)
+
+
         lessons_list = [
-            {'course': 'backend', 'title': 'Python DevOps', 'description': 'Python development'},
-            {'course': 'backend', 'title': 'PHP DevOps', 'description': 'PHP development'},
-            {'course': 'frontend', 'title': 'JavaScript DevOps', 'description': 'JavaScript development'},
-            {'course': 'frontend', 'title': 'Designer', 'description': 'Designer Figma'}
+            {'course': Course.objects.get(pk=1), 'title': 'Python DevOps', 'description': 'Python development'},
+            {'course': Course.objects.get(pk=1), 'title': 'PHP DevOps', 'description': 'PHP development'},
+            {'course': Course.objects.get(pk=2), 'title': 'JavaScript DevOps', 'description': 'JavaScript development'},
+            {'course': Course.objects.get(pk=2), 'title': 'Designer', 'description': 'Designer Figma'}
         ]
 
         # lesson = Lesson.objects.create(
