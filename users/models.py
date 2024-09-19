@@ -6,6 +6,7 @@ from school.models import Course, Lesson
 
 
 class User(AbstractUser):
+    username = None
     email = models.EmailField(
         verbose_name="Email address", unique=True, help_text="Input email address"
     )
@@ -42,6 +43,11 @@ class Payment(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Amount")
     payment_method = models.CharField(max_length=50, verbose_name="Payment method")
     paid = models.BooleanField(default=False, verbose_name="Paid")
+    session_id = models.CharField(
+        max_length=255, verbose_name='ID сессии', help_text='input session ID', **NULLABLE)
+    link = models.URLField(
+        max_length=400, verbose_name='link', help_text='input link for pay',
+                           **NULLABLE)
 
     class Meta:
         verbose_name = "Payment"
