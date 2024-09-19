@@ -1,6 +1,5 @@
 from django.db import models
 
-
 from config import settings
 from config.settings import NULLABLE
 
@@ -68,3 +67,25 @@ class Lesson(models.Model):
 
     def __str__(self):
         return f"Lesson: {self.title}, Course: {self.course}"
+
+
+class Subscription(models.Model):
+    user = models.ForeignKey(
+        "users.User",
+        on_delete=models.CASCADE,
+        verbose_name="User",
+        related_name="subscription_user",
+    )
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        verbose_name="Course_subscription",
+        related_name="subscription_course",
+    )
+
+    def __str__(self):
+        return f"{self.user} - subscription: {self.course}"
+
+    class Meta:
+        verbose_name = "Subscription"
+        verbose_name_plural = "Subscriptions"

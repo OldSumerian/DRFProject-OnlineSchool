@@ -3,7 +3,7 @@ from rest_framework.decorators import permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.routers import DefaultRouter
 from users.apps import UsersConfig
-from users.views import UserCreateAPIView
+from users.views import UserCreateAPIView, PaymentCreateView
 
 app_name = UsersConfig.name
 
@@ -25,4 +25,5 @@ urlpatterns = [
         TokenRefreshView.as_view(permission_classes=(AllowAny,)),
         name="token_refresh",
     ),
+    path('payment/', PaymentCreateView.as_view(), name='payment')
 ]
