@@ -8,7 +8,7 @@ from school.models import Course, Lesson, Subscription
 from school.paginations import CustomPagination
 from school.serializer import CourseSerializer, LessonSerializer, SubscriptionSerializer
 from users.permissions import IsModerator, IsOwner
-
+from school.tasks import sending_updates
 
 class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
@@ -31,6 +31,11 @@ class CourseViewSet(viewsets.ModelViewSet):
                 IsModerator,
             )
         return super().get_permissions()
+
+    def perform_update(self, serializer):
+        course = serializer.save()
+        sending_updates.delay(course)
+        course.save()
 
 
 class LessonCreateAPIView(generics.ListCreateAPIView):
