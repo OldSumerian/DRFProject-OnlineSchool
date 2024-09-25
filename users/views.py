@@ -32,6 +32,9 @@ class UserCreateAPIView(CreateAPIView):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
 
+    def perform_create(self, serializer):
+        serializer.save(password=User.objects.make_password(serializer.validated_data["password"]))
+
 class PaymentCreateView(CreateAPIView):
     serializer_class = PaymentSerializer
     queryset = Payment.objects.all()
