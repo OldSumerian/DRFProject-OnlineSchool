@@ -1,3 +1,4 @@
+from django.contrib.auth.hashers import make_password
 from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework.decorators import permission_classes
@@ -33,7 +34,7 @@ class UserCreateAPIView(CreateAPIView):
     permission_classes = (AllowAny,)
 
     def perform_create(self, serializer):
-        serializer.save(password=User.objects.set_password(serializer.validated_data["password"]))
+        serializer.save(password=make_password(serializer.validated_data["password"]))
 
 class PaymentCreateView(CreateAPIView):
     serializer_class = PaymentSerializer
