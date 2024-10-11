@@ -1,13 +1,8 @@
-# Используем базовый образ Python
-FROM python:3.11
-
-# Устанавливаем рабочую директорию в контейнере
+FROM python:3.11-slim
 WORKDIR /web
-
-# Копируем зависимости и код приложения
-COPY poetry.lock pyproject.toml .
-
-RUN python -m pip install --no-cache-dir poetry==1.4.0 \
-    && poetry config virtualenvs.in-project true \
-    && poetry install --without dev,test --no-interaction --no-ansi
+COPY pyproject.toml .
+RUN pip install --upgrade pip
+RUN pip install poetry
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-root
 COPY . .
